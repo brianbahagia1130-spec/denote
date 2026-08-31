@@ -1,0 +1,829 @@
+/* =====================================================
+   DENOTE — GLOBAL STYLE
+===================================================== */
+
+:root {
+    /* Main Brand Color */
+    --a1: #A77F60;
+
+    /* Background */
+    --cream: #F5F0E6;
+    --cream-dark: #E8DDCE;
+
+    /* Text */
+    --dark: #2F2A22;
+    --muted: #756B60;
+    --white: #FFFFFF;
+
+    /* Effects */
+    --border: rgba(47, 42, 34, 0.10);
+    --shadow: 0 20px 50px rgba(47, 42, 34, 0.10);
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: var(--cream);
+    color: var(--dark);
+
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    position: relative;
+
+    width: 100%;
+
+    background-color: var(--a1);
+
+    z-index: 100;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    width: 100%;
+    max-width: 1500px;
+
+    height: 76px;
+
+    margin: 0 auto;
+    padding: 0 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    display: inline-block;
+
+    color: var(--dark);
+
+    font-size: 28px;
+    font-weight: 700;
+
+    letter-spacing: -1.2px;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
+    opacity: 0.75;
+}
+
+
+/* =====================================================
+   NAVIGATION LINKS
+===================================================== */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.nav-links > a {
+    position: relative;
+
+    padding: 10px 15px;
+
+    color: var(--dark);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    border-radius: var(--radius-sm);
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Login */
+
+.nav-links > a:first-child:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   SIGN UP BUTTON
+===================================================== */
+
+.signup-btn {
+    margin-left: 5px;
+
+    padding: 10px 20px !important;
+
+    color: var(--dark) !important;
+
+    background-color: transparent;
+
+    border: 1.5px solid var(--dark);
+
+    border-radius: 999px !important;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease !important;
+}
+
+.signup-btn:hover {
+    color: var(--white) !important;
+
+    background-color: var(--dark);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(47, 42, 34, 0.18);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+
+    /*
+       Hero dibuat responsif.
+       Tidak menggunakan fixed height agar
+       gambar tidak terdistorsi.
+    */
+    min-height: min(720px, calc(100vh - 76px));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   HERO BACKGROUND
+===================================================== */
+
+.hero-background {
+    position: absolute;
+
+    /*
+       Melebarkan sedikit area background supaya
+       tidak muncul sisi kosong akibat blur.
+    */
+    inset: -25px;
+
+    background-image: url("../img/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    filter: blur(7px);
+
+    transform: scale(1.04);
+
+    z-index: 0;
+}
+
+
+/* =====================================================
+   HERO OVERLAY
+===================================================== */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    /*
+       Overlay membuat tulisan tetap mudah dibaca
+       meskipun gambar memiliki bagian yang terang.
+    */
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.20) 0%,
+            rgba(0, 0, 0, 0.38) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(900px, 90%);
+
+    text-align: center;
+
+    color: var(--white);
+
+    animation: heroAppear 0.8s ease both;
+}
+
+
+/* =====================================================
+   HERO HEADING
+===================================================== */
+
+.hero-content h1 {
+    margin-bottom: 35px;
+
+    font-size: clamp(42px, 6vw, 78px);
+
+    font-weight: 700;
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    text-wrap: balance;
+
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =====================================================
+   HERO BUTTON CONTAINER
+===================================================== */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+/* =====================================================
+   GENERAL BUTTON
+===================================================== */
+
+.btn {
+    min-width: 145px;
+
+    min-height: 50px;
+
+    padding: 13px 25px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =====================================================
+   LEARN MORE
+===================================================== */
+
+.btn-outline {
+    color: var(--white);
+
+    background-color: transparent;
+
+    border: 1.5px solid var(--white);
+
+    backdrop-filter: blur(4px);
+}
+
+.btn-outline:hover {
+    color: var(--dark);
+
+    background-color: var(--white);
+
+    transform: scale(1.05);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =====================================================
+   GET STARTED
+===================================================== */
+
+.btn-primary {
+    color: var(--white);
+
+    background-color: var(--a1);
+
+    border: 1.5px solid var(--a1);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =====================================================
+   ABOUT SECTION
+===================================================== */
+
+.about {
+    width: 100%;
+
+    padding: 130px 7%;
+
+    background-color: var(--cream);
+}
+
+
+/* =====================================================
+   ABOUT HEADING
+===================================================== */
+
+.about-heading {
+    width: min(720px, 100%);
+
+    margin: 0 auto 75px;
+
+    text-align: center;
+}
+
+
+/* Small label */
+
+.about-label {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: var(--a1);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+}
+
+
+/* Heading */
+
+.about-heading h2 {
+    margin-bottom: 22px;
+
+    color: var(--dark);
+
+    font-size: clamp(38px, 5vw, 60px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+
+    text-wrap: balance;
+}
+
+
+/* Description */
+
+.about-heading p {
+    width: min(560px, 100%);
+
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   ABOUT CARDS
+===================================================== */
+
+.about-cards {
+    width: min(1250px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.about-card {
+    position: relative;
+
+    min-height: 340px;
+
+    padding: 35px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: var(--cream-dark);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.35s ease,
+        background-color 0.35s ease;
+}
+
+
+/* Top accent */
+
+.about-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--a1);
+
+    transform: scaleX(0.25);
+
+    transform-origin: left;
+
+    transition: transform 0.35s ease;
+}
+
+
+/* Decorative circle */
+
+.about-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: -80px;
+    right: -75px;
+
+    border-radius: 50%;
+
+    background-color: rgba(167, 127, 96, 0.11);
+
+    transition:
+        transform 0.45s ease,
+        background-color 0.45s ease;
+}
+
+
+/* Card hover */
+
+.about-card:hover {
+    background-color: #E4D8C8;
+
+    transform: translateY(-10px);
+
+    box-shadow: var(--shadow);
+}
+
+.about-card:hover::before {
+    transform: scale(1.45);
+
+    background-color: rgba(167, 127, 96, 0.17);
+}
+
+.about-card:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =====================================================
+   CARD NUMBER
+===================================================== */
+
+.card-number {
+    position: relative;
+
+    z-index: 1;
+
+    color: var(--a1);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.card-content {
+    position: relative;
+
+    z-index: 1;
+}
+
+.card-content h3 {
+    margin-bottom: 14px;
+
+    color: var(--dark);
+
+    font-size: 31px;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    letter-spacing: -1px;
+}
+
+.card-content p {
+    max-width: 330px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 30px;
+    }
+
+    .hero {
+        min-height: 620px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(40px, 8vw, 62px);
+    }
+
+    .about {
+        padding: 100px 6%;
+    }
+
+    .about-cards {
+        grid-template-columns: 1fr;
+
+        max-width: 600px;
+    }
+
+    .about-card {
+        min-height: 290px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    /* Navbar */
+
+    .navbar {
+        height: 68px;
+
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-links > a {
+        padding: 8px 10px;
+
+        font-size: 13px;
+    }
+
+    .signup-btn {
+        padding: 9px 15px !important;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero-background {
+        filter: blur(6px);
+
+        transform: scale(1.06);
+    }
+
+    .hero-content {
+        width: 90%;
+    }
+
+    .hero-content h1 {
+        margin-bottom: 30px;
+
+        font-size: clamp(38px, 11vw, 52px);
+
+        line-height: 1.05;
+
+        letter-spacing: -1.8px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .btn {
+        width: 165px;
+
+        min-height: 48px;
+    }
+
+
+    /* About */
+
+    .about {
+        padding: 85px 20px;
+    }
+
+    .about-heading {
+        margin-bottom: 50px;
+    }
+
+    .about-label {
+        margin-bottom: 15px;
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .about-heading h2 {
+        margin-bottom: 18px;
+
+        font-size: 39px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .about-heading p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    /* Cards */
+
+    .about-cards {
+        gap: 16px;
+    }
+
+    .about-card {
+        min-height: 270px;
+
+        padding: 28px;
+
+        border-radius: 18px;
+    }
+
+    .card-content h3 {
+        font-size: 28px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+}
